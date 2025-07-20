@@ -1,3 +1,4 @@
+import asyncio
 from telegram import Bot
 
 BOT_TOKEN = "7872406811:AAH5Hu8NRmI5TMGKtIm4AXzDSIPDo0A_HIU"
@@ -17,11 +18,11 @@ mensagem = """
 🏠 Casa recomendada: Betano
 """
 
-bot = Bot(token=BOT_TOKEN)
-
-try:
-    bot.send_message(chat_id=CHAT_ID, text=mensagem)
+async def enviar_mensagem():
+    bot = Bot(token=BOT_TOKEN)
+    await bot.send_message(chat_id=CHAT_ID, text=mensagem)
     print("✅ Mensagem enviada com sucesso!")
-except Exception as e:
-    print("❌ Erro ao enviar:", e)
+
+if __name__ == "__main__":
+    asyncio.run(enviar_mensagem())
 
